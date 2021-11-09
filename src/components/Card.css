@@ -1,0 +1,8 @@
+.card-container {
+  display: inline-flex;
+}
+
+.card {
+  width: 300px;
+  position: relative;
+}
