@@ -9,11 +9,6 @@ const Home = () => {
       <h1>S2N</h1>
       <div className="container">
         <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
       </div>
     </div>
   );
