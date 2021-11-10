@@ -14,7 +14,7 @@ export default function Entreprise() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/argonautes")
+      .get("http://localhost:8080/")
       .then((res) => res.data)
       .then((data) => {
         setEntreprises(data);
