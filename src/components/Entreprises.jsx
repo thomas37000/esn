@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "./Card";
+import Form from "./Form";
 
 export default function Entreprise() {
   const [entreprises, setEntreprises] = useState([]);
@@ -35,6 +36,7 @@ export default function Entreprise() {
   return (
     <>
       <div>
+        <Form />
         {entreprises.map((entreprise, i) => (
           <Card
             {...entreprise}
