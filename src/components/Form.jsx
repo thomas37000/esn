@@ -27,7 +27,7 @@ export default function Form() {
   return (
     <>
       <form onSubmit={addNewEsn}>
-        <label>
+        <label htmlFor="name">
           Esn name:
           <input
             type="text"
@@ -37,7 +37,7 @@ export default function Form() {
           />
         </label>
 
-        <label>
+        <label htmlFor="rate">
           rates:
           <input
             type="text"
@@ -47,7 +47,7 @@ export default function Form() {
           />
         </label>
 
-        <label for="avatar">logo / image</label>
+        <label htmlFor="logo">logo / image</label>
 
         <input
           type="file"
