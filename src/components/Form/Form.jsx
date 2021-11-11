@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Form.css";
 
 export default function Form() {
   const [names, setNames] = useState("");
@@ -45,6 +46,7 @@ export default function Form() {
             <textarea
               placeholder="it's a S2n with 300 employees..."
               onChange={(event) => setInfos(event.target.value)}
+              className="texte-infos"
             />
           </label>
 
@@ -66,8 +68,10 @@ export default function Form() {
             // make invisible "no File choses", native with the input file
             style={{ color: "transparent" }}
             onChange={(e) => setImages(e.target.files[0])}
+            className="uplaod-img"
+            accept="image/*"
           />
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className="submit" />
         </form>
       </div>
     </>

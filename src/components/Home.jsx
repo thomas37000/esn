@@ -1,6 +1,6 @@
 import React from "react";
 import Entreprise from "./Entreprises";
-import Form from "./Form";
+import Form from "./Form/Form";
 // import PropTypes from 'prop-types';
 import "./Home.css";
 
