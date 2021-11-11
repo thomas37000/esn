@@ -28,7 +28,7 @@ export default function Entreprise() {
         } finally {
           setLoading(false);
         }
-      }, 2000);
+      }, 1000);
     };
 
     loadS2nApi();

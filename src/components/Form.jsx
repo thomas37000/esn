@@ -51,9 +51,10 @@ export default function Form() {
 
         <input
           type="file"
-          id="avatar"
-          name="avatar"
-          accept="image/png, image/jpeg"
+          value={images}
+          // make invisible "no File choses", native with the input file
+          style={{ color: "transparent" }}
+          onChange={(e) => setImages(e.target.files[0])}
         />
         <input type="submit" value="Submit" />
       </form>
