@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Form from "./Form";
 import Card from "./Card/Card";
 import Skeleton from "./Card/Skeleton";
 
@@ -45,7 +44,6 @@ export default function Entreprise() {
 
   return (
     <>
-      <Form />
       <div className="s2n-container">
         {fetchS2n}
         {/* { card skeleton loading} */}
