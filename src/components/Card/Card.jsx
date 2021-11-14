@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Card.css";
 
-export default function Card({ images, s2n_name, created_at, rate, cities }) {
+export default function Card({ images, s2n_name, created_at, rate, citie_name }) {
   const frenchDate = new Date(created_at).toLocaleDateString();
 
   return (
@@ -16,7 +16,7 @@ export default function Card({ images, s2n_name, created_at, rate, cities }) {
         </div>
         <h3>{frenchDate}</h3>
         <h4>{rate}</h4>
-        <div className="cities">{cities}</div>
+        <div className="cities">{citie_name}</div>
       </div>
     </div>
   );

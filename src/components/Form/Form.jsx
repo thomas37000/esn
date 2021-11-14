@@ -3,22 +3,27 @@ import axios from "axios";
 import "./Form.css";
 
 export default function Form() {
-  const [names, setNames] = useState("");
-  const [rates, setRates] = useState("");
+  const [s2n_name, setNames] = useState("");
+  const [rate, setrate] = useState("");
   const [images, setImages] = useState("");
   const [infos, setInfos] = useState("");
+  const [citie_name, setCities] = useState("");
+  const [created_at, setDates] = useState("");
 
   const { REACT_APP_SERVER_ADDRESS } = process.env;
 
   const addNewEsn = (event) => {
     event.preventDefault();
-    if (names && rates && images && infos) {
+    // images ne marche et empêche le submit
+    if (s2n_name && rate && infos && citie_name && created_at) {
       axios
         .post("http://localhost:8080/", {
-          names: names,
-          rates: Number(rates),
+          s2n_name: s2n_name,
+          rate: Number(rate),
           images: images,
           infos: infos,
+          citie_name: citie_name,
+          created_at: created_at,
         })
         .then((res) => {
           console.log(res);
@@ -35,7 +40,7 @@ export default function Form() {
             Esn name:
             <input
               type="text"
-              names="names"
+              name="s2n_name"
               placeholder="Beapp"
               onChange={(event) => setNames(event.target.value)}
             />
@@ -51,17 +56,37 @@ export default function Form() {
           </label>
 
           <label htmlFor="rate">
-            rates:
+            rate:
             <input
               type="text"
-              names="rates"
+              name="rate"
               placeholder="4,5"
-              onChange={(event) => setRates(event.target.value)}
+              onChange={(event) => setrate(event.target.value)}
             />
           </label>
 
-          <label htmlFor="logo">logo / image</label>
+          <label htmlFor="rate">
+            citie:
+            <input
+              type="text"
+              name="cities"
+              placeholder="Nantes"
+              onChange={(event) => setCities(event.target.value)}
+            />
+          </label>
 
+          <label htmlFor="id-date">created at: </label>
+          <input
+            type="date"
+            id="id-date"
+            name="created_at"
+            value="2020-07-22"
+            min="1980-01-01"
+            max="2030-12-31"
+            onChange={(event) => setDates(event.target.value)}
+          />
+
+          <label htmlFor="logo">logo / image</label>
           <input
             type="file"
             value={images}
