@@ -3,27 +3,27 @@ import axios from "axios";
 import "./Form.css";
 
 export default function Form() {
-  const [s2n_name, setNames] = useState("");
-  const [rate, setrate] = useState("");
+  const [names, setNames] = useState("");
+  const [rates, setRates] = useState("");
   const [images, setImages] = useState("");
   const [infos, setInfos] = useState("");
-  const [citie_name, setCities] = useState("");
-  const [created_at, setDates] = useState("");
+  const [cities, setCities] = useState("");
+  const [dates, setDates] = useState("");
 
   const { REACT_APP_SERVER_ADDRESS } = process.env;
 
   const addNewEsn = (event) => {
     event.preventDefault();
     // images ne marche et empêche le submit
-    if (s2n_name && rate && infos && citie_name && created_at) {
+    if (names && rates && infos && cities && dates) {
       axios
         .post("http://localhost:8080/", {
-          s2n_name: s2n_name,
-          rate: Number(rate),
+          s2n_name: names,
+          rate: Number(rates),
           images: images,
           infos: infos,
-          citie_name: citie_name,
-          created_at: created_at,
+          citie_name: cities,
+          created_at: dates,
         })
         .then((res) => {
           console.log(res);
@@ -61,7 +61,7 @@ export default function Form() {
               type="text"
               name="rate"
               placeholder="4,5"
-              onChange={(event) => setrate(event.target.value)}
+              onChange={(event) => setRates(event.target.value)}
             />
           </label>
 
