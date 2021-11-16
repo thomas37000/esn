@@ -25,7 +25,7 @@ export default function Card({ images, s2n_name, created_at, rate, citie_name, t
 
 Card.propTypes = {
   created_at: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  images: PropTypes.string.isRequired,
   citie_name: PropTypes.string.isRequired,
   s2n_name: PropTypes.string.isRequired,
   techno_name: PropTypes.string.isRequired,

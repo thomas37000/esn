@@ -15,7 +15,7 @@ export default function Form() {
   const addNewEsn = (event) => {
     event.preventDefault();
     // images ne marche et empêche le submit
-    if (names && rates && infos && cities && dates) {
+    if (names || rates || infos || cities || dates) {
       axios
         .post("http://localhost:8080/", {
           s2n_name: names,
@@ -23,7 +23,7 @@ export default function Form() {
           images: images,
           infos: infos,
           citie_name: cities,
-          created_at: dates,
+          year: dates,
         })
         .then((res) => {
           console.log(res);
@@ -75,14 +75,10 @@ export default function Form() {
             />
           </label>
 
-          <label htmlFor="id-date">created at: </label>
+          <label htmlFor="id-date">year: </label>
           <input
-            type="date"
-            id="id-date"
-            name="created_at"
-            value="2020-07-22"
-            min="1980-01-01"
-            max="2030-12-31"
+            type="number"
+            placeholder="2018"
             onChange={(event) => setDates(event.target.value)}
           />
 
