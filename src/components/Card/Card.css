@@ -20,6 +20,10 @@
   border-radius: 50%;
 }
 
+.card-by-id {
+  background-color: #fff;
+}
+
 .skeleton {
   position: relative;
   overflow: hidden;

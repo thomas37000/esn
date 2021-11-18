@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import axios from "axios";
 
 import "./Card.css";
@@ -29,14 +30,12 @@ export default function CardById() {
     loadS2nId();
   }, [id]);
 
-  const { images, rate, s2n_name, techno_name, year } = datas;
+  const { citie_name, images, infos, rate, s2n_name, techno_name, year } =
+    datas;
 
   return (
     <>
-      <div>
-        <div>
-          <span className="">{s2n_name}</span>
-        </div>
+      <div className="card-by-id">
         <div className="">
           <img src={images} alt="" />
         </div>
@@ -46,7 +45,7 @@ export default function CardById() {
               <h2>{s2n_name}</h2>
             </div>
           </div>
-          {/* <h3>{citie_name}</h3> */}
+          <h3>{citie_name}</h3>
           <div className=""></div>
           <div>{rate}</div>
           <div className="">
@@ -60,8 +59,19 @@ export default function CardById() {
               ))}
             </div>
           </div>
+          <div className="infos">{infos}</div>
         </div>
       </div>
     </>
   );
 }
+
+CardById.propTypes = {
+    images: PropTypes.string.isRequired,
+    citie_name: PropTypes.string.isRequired,
+    s2n_name: PropTypes.string.isRequired,
+    techno_name: PropTypes.string.isRequired,
+    rate: PropTypes.number.isRequired,
+    year: PropTypes.number.isRequired,
+  };
+  
