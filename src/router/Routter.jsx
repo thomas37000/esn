@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CardById from "../components/Card/CardById";
 import Entreprise from "../components/Entreprises";
-import Home from "../components/Home";
+import Form from "../components/Form/Form";
 
 const Routter = () => {
   return (
@@ -11,6 +11,7 @@ const Routter = () => {
       <Routes>
         {/* component is now element */}
         <Route exact path="/" element={<Entreprise />} />
+        <Route exact path="/formulaire" element={<Form />} />
         <Route path="/s2n/:id" element={<CardById />} />
       </Routes>
     </Router>
