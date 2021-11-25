@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import logo from "../img/logo.png";
 
 const NavWrapper = styled.div`
   width: 100%;
@@ -17,14 +18,37 @@ const NavWrapper = styled.div`
     margin-left: 30px;
     border-radius: 50%;
   }
+  .name-link {
+    color: #000;
+    text-decoration: none;
+    margin: 0 1rem;
+  }
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+  }
+  .nav-links:hover {
+    background: lightgray;
+  }
 `;
 
 const Nav = () => {
   return (
     <NavWrapper>
       <Link to="/">
-        <img className="logo" src="" alt="" />
+        <img className="logo" src={logo} alt="back to home" />
       </Link>
+
+      <div className="nav-links">
+        <h2>S2N</h2>
+      </div>
+      <div className="nav-links">
+        <Link to="/formulaire" className="name-link">
+          formulaire
+        </Link>
+      </div>
     </NavWrapper>
   );
 };
