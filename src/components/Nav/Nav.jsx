@@ -40,13 +40,17 @@ const Nav = () => {
       <Link to="/">
         <img className="logo" src={logo} alt="back to home" />
       </Link>
-
-      <div className="nav-links">
+      <div>
         <h2>S2N</h2>
       </div>
       <div className="nav-links">
         <Link to="/formulaire" className="name-link">
           formulaire
+        </Link>
+      </div>
+      <div className="nav-links">
+        <Link to="/s2n-api" className="name-link">
+          esn-api
         </Link>
       </div>
     </NavWrapper>
