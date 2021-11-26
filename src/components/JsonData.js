@@ -1,1 +1,0 @@
-export const JsonData = "http://localhost:8080/";

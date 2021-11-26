@@ -49,9 +49,13 @@ const Nav = () => {
         </Link>
       </div>
       <div className="nav-links">
-        <Link to="/s2n-api" className="name-link">
-          esn-api
-        </Link>
+        <a
+          href="http://localhost:8080/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          esn api
+        </a>
       </div>
     </NavWrapper>
   );
