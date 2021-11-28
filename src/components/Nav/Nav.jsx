@@ -49,6 +49,16 @@ const Nav = () => {
         </Link>
       </div>
       <div className="nav-links">
+        <Link to="/login" className="name-link">
+          connenxion
+        </Link>
+      </div>
+      <div className="nav-links">
+        <Link to="/profil" className="name-link">
+          Profil
+        </Link>
+      </div>
+      <div className="nav-links">
         <a
           href="http://localhost:8080/"
           target="_blank"

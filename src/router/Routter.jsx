@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Connexion from "../components/Form/Connexion";
 import CardById from "../components/Card/CardById";
 import Entreprise from "../components/Entreprises";
 import Form from "../components/Form/Form";
@@ -15,6 +16,7 @@ const Routter = () => {
         <Route exact path="/" element={<Entreprise />} />
         <Route path="/formulaire" element={<Form />} />
         <Route path="/s2n/:id" element={<CardById />} />
+        <Route path="/login" element={<Connexion />} />
       </Routes>
     </Router>
   );
