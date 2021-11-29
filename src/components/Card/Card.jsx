@@ -13,7 +13,7 @@ export default function Card({
   idEntreprises,
   handleClick,
 }) {
-  
+
   const frenchDate = new Date(created_at).toLocaleDateString();
 
   return (

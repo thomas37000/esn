@@ -8,6 +8,7 @@ export default function Entreprise() {
   const [entreprises, setEntreprises] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [search, setSearch] = useState("");
 
   const deleteS2n = (idEntreprises) => {
     const deleteEntreprises = entreprises.filter(
@@ -46,12 +47,23 @@ export default function Entreprise() {
       );
     });
 
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+  };
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error...</div>;
 
   return (
     <>
       <div className="s2n-container">
+        <input
+          type="text"
+          placeholder="search..."
+          value={search}
+          onChange={handleChange}
+        />
+
         {fetchS2n}
         {/* { card skeleton loading} */}
         {!entreprises && entreprises.map((i) => <Skeleton key={i} />)}
