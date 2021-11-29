@@ -11,7 +11,9 @@ export default function Card({
   citie_name,
   techno_name,
   idEntreprises,
+  handleClick,
 }) {
+  
   const frenchDate = new Date(created_at).toLocaleDateString();
 
   return (
@@ -28,6 +30,9 @@ export default function Card({
           <div className="technos">{techno_name}</div>
         </div>
       </Link>
+      {/* <button className="btn" onClick={handleClick}>
+        supprimer
+      </button> */}
     </div>
   );
 }

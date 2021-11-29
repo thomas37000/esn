@@ -8,7 +8,7 @@ const NavWrapper = styled.div`
   height: 7vh;
   background: #f7f7f7;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   text-align: right;
   .logo {

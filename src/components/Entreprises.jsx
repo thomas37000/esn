@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "./Card/Card";
 import Skeleton from "./Card/Skeleton";
-import './Entreprises.css';
+import "./Entreprises.css";
 
 export default function Entreprise() {
   const [entreprises, setEntreprises] = useState([]);
@@ -10,10 +10,10 @@ export default function Entreprise() {
   const [error, setError] = useState(null);
 
   const deleteS2n = (idEntreprises) => {
-    const filteredArgonaute = entreprises.filter(
-      (entreprise) => entreprise.identreprise !== idEntreprises
+    const deleteEntreprises = entreprises.filter(
+      (entreprise) => entreprise.idEntreprises !== idEntreprises
     );
-    setEntreprises(filteredArgonaute);
+    setEntreprises(deleteEntreprises);
   };
 
   useEffect(() => {
@@ -37,7 +37,13 @@ export default function Entreprise() {
   const fetchS2n =
     entreprises &&
     entreprises.map((s2n, i) => {
-      return <Card key={i} {...s2n} />;
+      return (
+        <Card
+          key={i}
+          {...s2n}
+          handleClick={() => deleteS2n(s2n.idEntreprises)}
+        />
+      );
     });
 
   if (loading) return <div>Loading...</div>;
