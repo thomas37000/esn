@@ -24,7 +24,7 @@ export default function Card({
             <img src={images} alt={s2n_name} className="cards-image" />
           </div>
           <div className="card-Name">
-            <h2>{s2n_name}</h2>
+            <h2 className="S2n-name">{s2n_name}</h2>
           </div>
           <div className="cities">{citie_name}</div>
           <div className="technos">{techno_name}</div>

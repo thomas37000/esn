@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap&rel="stylesheet"');
+
 .divProfil {
   width: 155px;
   height: 155px;
@@ -22,6 +24,11 @@
 
 .card-by-id {
   background-color: #fff;
+}
+
+.S2n-name {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 35px;
 }
 
 /* without a:link text decoration not working ! */
