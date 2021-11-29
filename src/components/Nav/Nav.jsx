@@ -45,16 +45,21 @@ const Nav = () => {
       </div>
       <div className="nav-links">
         <Link to="/formulaire" className="name-link">
-          formulaire
+          Formulaire
         </Link>
       </div>
       <div className="nav-links">
         <Link to="/login" className="name-link">
-          connenxion
+          Connenxion
         </Link>
       </div>
       <div className="nav-links">
-        <Link to="/profil" className="name-link">
+        <Link to="/users/sign-in" className="name-link">
+          Inscription
+        </Link>
+      </div>
+      <div className="nav-links">
+        <Link to="/users/profil" className="name-link">
           Profil
         </Link>
       </div>

@@ -10,7 +10,7 @@ export default function Card({
   rate,
   citie_name,
   techno_name,
-  idEntreprises
+  idEntreprises,
 }) {
   const frenchDate = new Date(created_at).toLocaleDateString();
 
@@ -24,8 +24,6 @@ export default function Card({
           <div className="card-Name">
             <h2>{s2n_name}</h2>
           </div>
-          <h3>{frenchDate}</h3>
-          <h4>{rate}</h4>
           <div className="cities">{citie_name}</div>
           <div className="technos">{techno_name}</div>
         </div>

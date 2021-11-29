@@ -7,7 +7,7 @@
   margin: 0 5rem;
 }
 
-.card-container{
+.card-container {
   display: inline-flex;
   justify-content: space-around;
   padding: 30px 20px 0;
@@ -24,6 +24,14 @@
   background-color: #fff;
 }
 
+/* without a:link text decoration not working ! */
+.card-text,
+a:link,
+a:visited {
+  color: #333;
+  text-decoration: none;
+}
+
 .skeleton {
   position: relative;
   overflow: hidden;
@@ -37,7 +45,7 @@
 }
 
 .skeleton::before {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   width: 100%;
@@ -67,7 +75,6 @@
       left: 100%;
   }
 } */
-
 
 @media screen and (min-width: 200px) and (max-width: 640px) {
   .Card {
