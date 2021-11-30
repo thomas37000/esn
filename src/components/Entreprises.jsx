@@ -9,6 +9,7 @@ export default function Entreprise() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
+  // const [searchS2n, setSearchS2n] = useState("");
 
   const deleteS2n = (idEntreprises) => {
     const deleteEntreprises = entreprises.filter(
@@ -35,17 +36,44 @@ export default function Entreprise() {
     loadS2nApi();
   }, []);
 
+  // val === value
   const fetchS2n =
     entreprises &&
-    entreprises.map((s2n, i) => {
-      return (
-        <Card
-          key={i}
-          {...s2n}
-          handleClick={() => deleteS2n(s2n.idEntreprises)}
-        />
-      );
-    });
+    entreprises
+      .filter((val) => {
+        if (search === "") {
+          return val;
+        } else if (
+          val.s2n_name.toLowerCase().includes(search.toLowerCase()) 
+          // waiting join get request others tables cities and technos
+          // || val.citie_name.toLowerCase().includes(search.toLowerCase()) ||
+          // val.techno_name.toLowerCase().includes(search.toLowerCase())
+        ) {
+          return val;
+        }
+      })
+      .map((s2n, i) => {
+        return (
+          <Card
+            key={i}
+            {...s2n}
+            handleClick={() => deleteS2n(s2n.idEntreprises)}
+          />
+        );
+      });
+
+  const searchSubmit = (event) => {
+    event.preventDefault();
+    if (search) {
+      fetch("http://localhost:8080/")
+        .then((res) => res.json())
+        .then((data) => {
+          setEntreprises(data);
+        });
+
+      setSearch("");
+    }
+  };
 
   const handleChange = (event) => {
     setSearch(event.target.value);
@@ -57,12 +85,14 @@ export default function Entreprise() {
   return (
     <>
       <div className="s2n-container">
-        <input
-          type="text"
-          placeholder="search..."
-          value={search}
-          onChange={handleChange}
-        />
+        <form onSubmit={searchSubmit}>
+          <input
+            type="text"
+            placeholder="search..."
+            value={search}
+            onChange={handleChange}
+          />
+        </form>
 
         {fetchS2n}
         {/* { card skeleton loading} */}
