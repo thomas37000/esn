@@ -27,7 +27,7 @@
 }
 
 .S2n-name {
-  font-family: 'Fredericka the Great', cursive;
+  font-family: "Fredericka the Great", cursive;
   font-size: 35px;
 }
 
@@ -37,6 +37,15 @@ a:link,
 a:visited {
   color: #333;
   text-decoration: none;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
 }
 
 .skeleton {

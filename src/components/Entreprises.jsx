@@ -9,7 +9,6 @@ export default function Entreprise() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
-  // const [searchS2n, setSearchS2n] = useState("");
 
   const deleteS2n = (idEntreprises) => {
     const deleteEntreprises = entreprises.filter(
@@ -18,13 +17,16 @@ export default function Entreprise() {
     setEntreprises(deleteEntreprises);
   };
 
+  const { REACT_APP_API_URL } = process.env;
+
   useEffect(() => {
     const loadS2nApi = async () => {
       setTimeout(async () => {
         try {
-          const res = await axios.get("http://localhost:8080/");
+          const res = await axios.get(`${REACT_APP_API_URL}`);
           setEntreprises(res.data);
           console.log("s2n", res.data);
+          console.log("test", res.data.cities);
         } catch (error) {
           setError(error);
         } finally {
@@ -44,7 +46,7 @@ export default function Entreprise() {
         if (search === "") {
           return val;
         } else if (
-          val.s2n_name.toLowerCase().includes(search.toLowerCase()) 
+          val.s2n_name.toLowerCase().includes(search.toLowerCase())
           // waiting join get request others tables cities and technos
           // || val.citie_name.toLowerCase().includes(search.toLowerCase()) ||
           // val.techno_name.toLowerCase().includes(search.toLowerCase())
