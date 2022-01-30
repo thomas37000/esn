@@ -1,23 +1,30 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
-import "./Card.css";
 import PutS2n from "../Form/PutS2n";
+import "./Card.css";
+import "../Form/Form.css";
 
 export default function CardById() {
   const { id } = useParams();
+  const [names, setNames] = useState("");
   const [datas, setDatas] = useState([]);
   const [technos, setTechnos] = useState([]);
   const [s2nId, setS2nId] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [newImages, setNewImages] = useState("");
+  const [newInfos, setNewInfos] = useState("");
+
+  const { REACT_APP_SERVER } = process.env;
 
   useEffect(() => {
     const loadS2nId = async () => {
       setTimeout(async () => {
         try {
-          const res = await axios.get(`http://localhost:8080/s2n/${id}`);
+          const res = await axios.get(`${REACT_APP_SERVER}/s2n/${id}`);
           setDatas(res.data);
           console.log("s2n by id", res.data);
         } catch (error) {
@@ -25,7 +32,7 @@ export default function CardById() {
         } finally {
           setLoading(false);
         }
-      }, 1000);
+      }, 500);
     };
 
     loadS2nId();
@@ -35,9 +42,33 @@ export default function CardById() {
     datas;
 
   /* update s2n*/
-  const modifyS2n = () => {
-    const id = s2nId.id;
-    PutS2n(infos, id);
+  const updateS2n = (event) => {
+    event.preventDefault();
+    if (names || newImages || newInfos) {
+      axios
+        .put(`${REACT_APP_SERVER}/s2n/${id}`, {
+          s2n_name: names,
+          images: newImages,
+          infos: newInfos,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.log("error: ", err));
+    }
+  };
+
+  /* delete s2n */
+  const navigate = useNavigate();
+
+  const deleteS2N = () => {
+    axios
+      .delete(`${REACT_APP_SERVER}/s2n/${id}`)
+      .then(() => alert("s2n Deleted"))
+      .catch((error) => {
+        console.error(error.message);
+      });
+    navigate("/");
   };
 
   const openModal = document.getElementById("open-modal");
@@ -58,11 +89,14 @@ export default function CardById() {
     document.getElementById("modal").style.display = "none";
   }
 
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error...</div>;
+
   return (
     <>
       <div className="card-by-id">
-        <div className="">
-          <img src={images} alt="" />
+        <div className="cardImg">
+          <img src={images} alt={s2n_name} className="cards-image" />
         </div>
         <div className="">
           <div className="">
@@ -78,6 +112,7 @@ export default function CardById() {
           </div>
           <div className="">
             <div className="">Technos: </div>
+
             {/* // ne marche pas */}
 
             {/* <div className="">
@@ -85,20 +120,58 @@ export default function CardById() {
                 <div key={i}>{technos}</div>
               ))}
             </div> */}
+
             <div>{techno_name}</div>
           </div>
           <div className="infos">{infos}</div>
-          <button className="btn" onClick={modifyS2n}>
-            modifier
+          <button className="delete" onClick={deleteS2N}>
+            Supprimer
           </button>
-          {/* <div id="modal" class="modal">
+          {/******************************* modifier les infos de l'entreprise ***************************************/}
+          <button className="update" id="open-modal" onClick="open()">
+            Modifier
+          </button>
+          <div id="modal" class="">
             <div class="modal-inner content center">
-              <Form />
-              <button class="btn-close" id="close-modal" onclick="close()">
-                Close
-              </button>
+              <form onSubmit={updateS2n}>
+                <label htmlFor="name">
+                  Esn name:
+                  <input
+                    type="text"
+                    name="s2n_name"
+                    placeholder="Beapp"
+                    onChange={(event) => setNames(event.target.value)}
+                  />
+                </label>
+
+                <label htmlFor="name">
+                  Change your Description:
+                  <textarea
+                    placeholder="change your infos"
+                    onChange={(event) => setNewInfos(event.target.value)}
+                    className="texte-infos"
+                  />
+                </label>
+
+                <label htmlFor="logo">logo / image avec URL</label>
+                <input
+                  type="text"
+                  name="images"
+                  placeholder="url of the image"
+                  onChange={(event) => setNewImages(event.target.value)}
+                />
+
+                <div className="update-btn">
+                  <button type="submit" className="update">
+                    Valider
+                  </button>
+                  <button className="close" id="close-modal" onClick="close()">
+                    Close
+                  </button>
+                </div>
+              </form>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </>

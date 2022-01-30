@@ -49,12 +49,12 @@ const Nav = () => {
         </Link>
       </div>
       <div className="nav-links">
-        <Link to="/login" className="name-link">
+        <Link to="/users/login" className="name-link">
           Connenxion
         </Link>
       </div>
       <div className="nav-links">
-        <Link to="/users/sign-in" className="name-link">
+        <Link to="/users/sign-up" className="name-link">
           Inscription
         </Link>
       </div>

@@ -12,7 +12,7 @@ export default function Inscription() {
     event.preventDefault();
     if (emails || passwords) {
       axios
-        .post("http://localhost:8080/users/sign-in", {
+        .post("http://localhost:8080/users/sign-up", {
           email: emails,
           password: passwords,
         })

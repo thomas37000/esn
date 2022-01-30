@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const PutS2n = (infos, id) => {
-  const { REACT_APP_SERVER_ADDRESS } = process.env;
+  const { REACT_APP_SERVER } = process.env;
 
   axios
-    .put(`${REACT_APP_SERVER_ADDRESS}/s2n/${id}`, {
+    .put(`${REACT_APP_SERVER}/s2n/${id}`, {
       s2n_name: infos.names,
       rate: Number(infos.rates),
       images: infos.images,

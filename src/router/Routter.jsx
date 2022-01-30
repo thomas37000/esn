@@ -18,7 +18,7 @@ const Routter = () => {
         <Route path="/formulaire" element={<Form />} />
         <Route path="/s2n/:id" element={<CardById />} />
         <Route path="/users/login" element={<Connexion />} />
-        <Route path="/users/sign-in" element={<Inscription />} />
+        <Route path="/users/sign-up" element={<Inscription />} />
       </Routes>
     </Router>
   );

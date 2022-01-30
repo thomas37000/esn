@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "./Card/Card";
@@ -26,7 +27,6 @@ export default function Entreprise() {
           const res = await axios.get(`${REACT_APP_API_URL}`);
           setEntreprises(res.data);
           console.log("s2n", res.data);
-          console.log("test", res.data.cities);
         } catch (error) {
           setError(error);
         } finally {
@@ -67,7 +67,7 @@ export default function Entreprise() {
   const searchSubmit = (event) => {
     event.preventDefault();
     if (search) {
-      fetch("http://localhost:8080/")
+      fetch(`${REACT_APP_API_URL}`)
         .then((res) => res.json())
         .then((data) => {
           setEntreprises(data);

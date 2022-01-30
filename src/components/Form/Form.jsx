@@ -6,11 +6,13 @@ import GetS2nById from "./GetS2nById";
 
 export default function Form() {
   const [names, setNames] = useState("");
+  const [infos, setInfos] = useState("");
   const [rates, setRates] = useState("");
   const [images, setImages] = useState("");
-  const [infos, setInfos] = useState("");
   const [cities, setCities] = useState("");
   const [dates, setDates] = useState("");
+
+  // s2nId et S2nList states pour le Update
   const [s2nId, setS2nId] = useState([]);
   const [S2nList, setS2nList] = useState([]);
 
@@ -27,13 +29,14 @@ export default function Form() {
           images: images,
           infos: infos,
           citie_name: cities,
-          year: dates,
+          year: Number(dates),
         })
         .then((res) => {
           console.log(res);
         })
         .catch((err) => console.log("error: ", err));
     }
+    
   };
 
   const handleSelectModify = (e) => {
@@ -58,7 +61,7 @@ export default function Form() {
               name="s2n_name"
               placeholder="Beapp"
               onChange={(event) => setNames(event.target.value)}
-              value={infos.names || s2nId.names}
+              // value={infos.names || s2nId.names}
             />
           </label>
 
@@ -68,7 +71,7 @@ export default function Form() {
               placeholder="it's a S2n with 300 employees..."
               onChange={(event) => setInfos(event.target.value)}
               className="texte-infos"
-              value={infos.infos || s2nId.infos}
+              // value={infos.infos || s2nId.infos}
             />
           </label>
 
@@ -79,7 +82,7 @@ export default function Form() {
               name="rate"
               placeholder="4,5"
               onChange={(event) => setRates(event.target.value)}
-              value={infos.rate || s2nId.rate}
+              // value={infos.rate || s2nId.rate}
             />
           </label>
 
@@ -90,7 +93,7 @@ export default function Form() {
               name="cities"
               placeholder="Nantes"
               onChange={(event) => setCities(event.target.value)}
-              value={infos.cities || s2nId.cities}
+              // value={infos.cities || s2nId.cities}
             />
           </label>
 
@@ -99,7 +102,7 @@ export default function Form() {
             type="number"
             placeholder="2018"
             onChange={(event) => setDates(event.target.value)}
-            value={infos.dates || s2nId.dates}
+            // value={s2nId.dates}
           />
 
           <label htmlFor="logo">logo / image</label>
@@ -108,9 +111,18 @@ export default function Form() {
             // make invisible "no File choses", native with the input file
             style={{ color: "transparent" }}
             onChange={(e) => setImages(e.target.files[0])}
+            //  const selectedImg = e.target[0].files[0];
             className="uplaod-img"
             accept="image/*"
-            value={infos.images || s2nId.images}
+            //   value={infos.images || s2nId.images}
+          />
+
+          <label htmlFor="logo">logo / image avec URL</label>
+          <input
+            type="text"
+            name="images"
+            placeholder="url of the image"
+            onChange={(event) => setImages(event.target.value)}
           />
 
           <input type="submit" value="Submit" className="submit" />
