@@ -11,6 +11,7 @@ export default function Form() {
   const [images, setImages] = useState("");
   const [cities, setCities] = useState("");
   const [dates, setDates] = useState("");
+  const [technos, setTechnos] = useState("");
 
   // s2nId et S2nList states pour le Update
   const [s2nId, setS2nId] = useState([]);
@@ -65,7 +66,7 @@ export default function Form() {
             />
           </label>
 
-          <label htmlFor="name">
+          <label htmlFor="description">
             Esn Description:
             <textarea
               placeholder="it's a S2n with 300 employees..."
@@ -86,7 +87,17 @@ export default function Form() {
             />
           </label>
 
-          <label htmlFor="rate">
+          <label htmlFor="technos">
+            Technos:
+            <input
+              type="text"
+              name="technos"
+              placeholder="Javascript"
+              onChange={(event) => setTechnos(event.target.value)}
+            />
+          </label>
+
+          <label htmlFor="citie">
             citie:
             <input
               type="text"

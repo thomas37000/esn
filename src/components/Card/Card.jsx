@@ -12,6 +12,7 @@ export default function Card({
   techno_name,
   idEntreprises,
   handleClick,
+  technos
 }) {
 
   const frenchDate = new Date(created_at).toLocaleDateString();

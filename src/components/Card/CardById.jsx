@@ -115,11 +115,11 @@ export default function CardById() {
 
             {/* // ne marche pas */}
 
-            {/* <div className="">
+            <div className="">
               {technos.map((techno, i) => (
                 <div key={i}>{technos}</div>
               ))}
-            </div> */}
+            </div>
 
             <div>{techno_name}</div>
           </div>
@@ -131,8 +131,8 @@ export default function CardById() {
           <button className="update" id="open-modal" onClick="open()">
             Modifier
           </button>
-          <div id="modal" class="">
-            <div class="modal-inner content center">
+          <div id="modal" className="">
+            <div className="modal-inner content center">
               <form onSubmit={updateS2n}>
                 <label htmlFor="name">
                   Esn name:
