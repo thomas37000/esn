@@ -22,13 +22,47 @@
   border-radius: 50%;
 }
 
+/**************************************** Card By id ****************************************/
+.card-by-id,
+.card-by-id-body {
+  padding: 1rem;
+}
+
 .card-by-id {
   background-color: #fff;
+  width: 600px;
+  margin: 0 auto;
+}
+
+.card-header-by-id {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardImgById {
+  width: auto;
+  height: auto;
 }
 
 .S2n-name {
   font-family: "Fredericka the Great", cursive;
   font-size: 35px;
+}
+
+.card-by-id-body {
+  color: #333;
+}
+
+.citie {
+  color: rgba(0, 0, 0, 0.6)
+}
+
+.citie,
+.hard-skills,
+.year,
+.rate,
+.infos {
+  margin-bottom: 1rem;
 }
 
 /* without a:link text decoration not working ! */
@@ -77,11 +111,12 @@ a:visited {
   animation: loading 1s infinite;
 }
 
-.close, .delete, .update {
+.close,
+.delete,
+.update {
   color: #f1f1f1;
   font-weight: 700;
   outline: none;
-  text-transform: uppercase;
   transition: all 0.2s ease;
   border-radius: 4px;
   padding: 10px;
@@ -89,7 +124,7 @@ a:visited {
 }
 
 .close {
-  background-color:rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.25);
   color: #333;
 }
 
@@ -100,6 +135,9 @@ a:visited {
 .update {
   background-color: yellowgreen;
   color: #333;
+}
+
+.hard-skills {
 }
 
 @keyframes loading {

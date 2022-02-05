@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "./Card/Card";
 import Skeleton from "./Card/Skeleton";
-import "./Entreprises.css";
 
 export default function Entreprise() {
   const [entreprises, setEntreprises] = useState([]);
