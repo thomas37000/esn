@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "./Card/Card";
 import Skeleton from "./Card/Skeleton";
+import Card2 from "./Card/Card2";
 
 export default function Entreprise() {
   const [entreprises, setEntreprises] = useState([]);
@@ -55,7 +56,7 @@ export default function Entreprise() {
       })
       .map((s2n, i) => {
         return (
-          <Card
+          <Card2
             key={i}
             {...s2n}
             handleClick={() => deleteS2n(s2n.idEntreprises)}
