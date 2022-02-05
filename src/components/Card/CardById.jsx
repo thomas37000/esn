@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Button } from 'react-bootstrap';
 import axios from "axios";
+import ModalDelete from "../Modal/ModalDelete";
+import ModalUpdate from "../Modal/ModalUpdate";
 import "./Card.css";
 import "../Form/Form.css";
 
@@ -12,7 +13,6 @@ export default function CardById() {
   const [names, setNames] = useState("");
   const [datas, setDatas] = useState([]);
   const [technos, setTechnos] = useState([]);
-  console.log(technos);
   // const [s2nId, setS2nId] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -72,41 +72,21 @@ export default function CardById() {
     navigate("/");
   };
 
-  const openModal = document.getElementById("open-modal");
-  if (openModal) {
-    openModal.addEventListener("click", open);
-  }
-
-  function open() {
-    document.getElementById("modal").style.display = "block";
-  }
-
-  const closeModal = document.getElementById("close-modal");
-  if (closeModal) {
-    closeModal.addEventListener("click", close);
-  }
-
-  function close() {
-    document.getElementById("modal").style.display = "none";
-  }
-
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error...</div>;
 
   return (
     <>
       <div className="s2n-container">
+        {/*** Supprimer l'entreprise ***/}
         <div className="card-header-by-id">
-          <button className="delete" onClick={deleteS2N}>
-            Supprimer
-          </button>
+          <ModalDelete deleteS2N={deleteS2N} />
         </div>
 
         <div className="cardImg">
           <img src={images} alt={s2n_name} className="cardImgById" />
         </div>
         <div className="card-by-id-body">
-
           <h2>{s2n_name}</h2>
 
           <h3 className="citie">city: {citie_name}</h3>
@@ -126,51 +106,8 @@ export default function CardById() {
           <div className="rate">rate: {rate}</div>
           <div className="infos">{infos}</div>
 
-          {/******************************* modifier les infos de l'entreprise ***************************************/}
-          <button className="update" id="open-modal" onClick="open()">
-            Modifier
-          </button>
-          <div id="modal" className="">
-            <div className="modal-inner content center">
-              <form onSubmit={updateS2n}>
-                <label htmlFor="name">
-                  Esn name:
-                  <input
-                    type="text"
-                    name="s2n_name"
-                    placeholder="Beapp"
-                    onChange={(event) => setNames(event.target.value)}
-                  />
-                </label>
-
-                <label htmlFor="name">
-                  Change your Description:
-                  <textarea
-                    placeholder="change your infos"
-                    onChange={(event) => setNewInfos(event.target.value)}
-                    className="texte-infos"
-                  />
-                </label>
-
-                <label htmlFor="logo">logo / image avec URL</label>
-                <input
-                  type="text"
-                  name="images"
-                  placeholder="url of the image"
-                  onChange={(event) => setNewImages(event.target.value)}
-                />
-
-                <div className="update-btn">
-                  <button type="submit" className="update">
-                    Valider
-                  </button>
-                  <button className="close" id="close-modal" onClick="close()">
-                    Close
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+          {/*** modifier les infos de l'entreprise ***/}
+          <ModalUpdate />
         </div>
       </div>
     </>
