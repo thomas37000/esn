@@ -15,8 +15,6 @@ export default function Card({
   technos
 }) {
 
-  const frenchDate = new Date(created_at).toLocaleDateString();
-
   return (
     <div className="card-container">
       <Link to={`/s2n/${idEntreprises}`} className="s2n-link">

@@ -6,13 +6,13 @@ export default function Connexion() {
   const [emails, setEmails] = useState("");
   const [passwords, setPasswords] = useState("");
 
-  const { REACT_APP_SERVER_ADDRESS } = process.env;
+  const { REACT_APP_SERVER } = process.env;
 
   const connexion = (event) => {
     event.preventDefault();
     if (emails || passwords) {
       axios
-        .post("http://localhost:8080/", {
+        .post(`${REACT_APP_SERVER}/users/login`, {
           email: emails,
           password: passwords,
         })
@@ -49,7 +49,6 @@ export default function Connexion() {
 
           <input type="submit" value="Submit" className="submit" />
         </form>
-        
       </div>
     </>
   );

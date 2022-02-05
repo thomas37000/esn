@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
-import PutS2n from "../Form/PutS2n";
 import "./Card.css";
 import "../Form/Form.css";
 
@@ -12,7 +11,7 @@ export default function CardById() {
   const [names, setNames] = useState("");
   const [datas, setDatas] = useState([]);
   const [technos, setTechnos] = useState([]);
-  const [s2nId, setS2nId] = useState([]);
+  // const [s2nId, setS2nId] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [newImages, setNewImages] = useState("");
@@ -179,7 +178,7 @@ export default function CardById() {
 }
 
 CardById.propTypes = {
-  images: PropTypes.string.isRequired,
+  images: PropTypes.string,
   citie_name: PropTypes.string.isRequired,
   s2n_name: PropTypes.string.isRequired,
   techno_name: PropTypes.string.isRequired,

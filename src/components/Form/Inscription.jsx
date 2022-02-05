@@ -6,13 +6,13 @@ export default function Inscription() {
   const [emails, setEmails] = useState("");
   const [passwords, setPasswords] = useState("");
 
-  const { REACT_APP_SERVER_ADDRESS } = process.env;
+  const { REACT_APP_SERVER } = process.env;
 
   const connexion = (event) => {
     event.preventDefault();
     if (emails || passwords) {
       axios
-        .post("http://localhost:8080/users/sign-up", {
+        .post(`${REACT_APP_SERVER}/users/sign-up`, {
           email: emails,
           password: passwords,
         })
