@@ -10,7 +10,7 @@ export default function Entreprise() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
-
+ 
   const deleteS2n = (idEntreprises) => {
     const deleteEntreprises = entreprises.filter(
       (entreprise) => entreprise.idEntreprises !== idEntreprises
@@ -82,7 +82,7 @@ export default function Entreprise() {
   };
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error...</div>;
+  if (error) return <div>Error...</div>;  
 
   return (
     <>
