@@ -34,7 +34,7 @@
 }
 
 .s2n-container {
-  width: 850px;
+  width: 950px;
   margin: 0 auto;
   padding: 1rem;
   box-sizing: border-box;
@@ -45,3 +45,8 @@
     linear-gradient(to bottom, red, orange);
 }
 
+@media screen and (min-width: 200px) and (max-width: 640px) {
+  .s2n-container {
+    width: auto;
+  }
+}

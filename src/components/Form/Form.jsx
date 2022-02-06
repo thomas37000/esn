@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, FloatingLabel, Form } from "react-bootstrap/";
+import { Button, Form } from "react-bootstrap/";
 import PutS2n from "./PutS2n";
 import GetS2nById from "./GetS2nById";
 import "./Form.css";
