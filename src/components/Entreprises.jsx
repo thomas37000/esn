@@ -1,16 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Form } from "react-bootstrap/";
+import Select from "react-select";
 import Card from "./Card/Card";
 import Skeleton from "./Card/Skeleton";
 import Card2 from "./Card/Card2";
 
 export default function Entreprise() {
   const [entreprises, setEntreprises] = useState([]);
+  // console.log(entreprises[1].citie_name);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
- 
+  const [selectedOption, setSelectedOption] = useState(null);
+
   const deleteS2n = (idEntreprises) => {
     const deleteEntreprises = entreprises.filter(
       (entreprise) => entreprise.idEntreprises !== idEntreprises
@@ -81,8 +85,18 @@ export default function Entreprise() {
     setSearch(event.target.value);
   };
 
+  const options =
+    entreprises &&
+    entreprises.map((entreprise) => {
+      return {
+        value: entreprise.idEntreprises,
+        label: entreprise.citie_name,
+      };
+    });
+
+  console.log(options);
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error...</div>;  
+  if (error) return <div>Error...</div>;
 
   return (
     <>
@@ -95,6 +109,16 @@ export default function Entreprise() {
             onChange={handleChange}
           />
         </form>
+
+        <div className="filter-by-citie">
+          <Select
+            placeholder="Nantes"
+            defaultValue={selectedOption}
+            onChange={setSelectedOption}
+            options={options}
+            value={selectedOption}
+          />
+        </div>
 
         {fetchS2n}
         {/* { card skeleton loading} */}

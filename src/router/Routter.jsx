@@ -12,7 +12,7 @@ import TechnoById from "../components/TechnoById";
 const Routter = () => {
   return (
     <Router>
-      <Nav />
+    <Nav />
       {/* react-router-dom version 6 no more Switch replace by Routes */}
       <Routes>
         {/* component is now element */}
