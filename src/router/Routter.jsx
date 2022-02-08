@@ -8,11 +8,13 @@ import Formulaire from "../components/Form/Form";
 import Nav from "../components/Nav/Nav";
 import Technos from "../components/Technos";
 import TechnoById from "../components/TechnoById";
+import NavBar from "../components/Nav/Navbar";
 
 const Routter = () => {
   return (
     <Router>
-    <Nav />
+      {/* <Nav /> */}
+      <NavBar />
       {/* react-router-dom version 6 no more Switch replace by Routes */}
       <Routes>
         {/* component is now element */}

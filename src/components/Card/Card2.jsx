@@ -7,13 +7,9 @@ import { Button, Card } from "react-bootstrap";
 export default function Card2({
   images,
   s2n_name,
-  created_at,
-  rate,
   citie_name,
   techno_name,
   idEntreprises,
-  handleClick,
-  technos,
 }) {
   return (
     <div className="card-container">

@@ -6,13 +6,9 @@ import "./Card.css";
 export default function Card({
   images,
   s2n_name,
-  created_at,
-  rate,
   citie_name,
   techno_name,
   idEntreprises,
-  handleClick,
-  technos
 }) {
 
   return (

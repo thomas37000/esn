@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -13,7 +14,7 @@ export default function CardById() {
 
   const [datas, setDatas] = useState([]);
   const [technos, setTechnos] = useState([]);
-  // const [s2nId, setS2nId] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
