@@ -11,6 +11,7 @@ const PutS2n = (infos, id) => {
       infos: infos.infos,
       citie_name: infos.cities,
       year: infos.dates,
+      techno_name: infos.technos,
     })
     .then(() => alert("S2n Modifiée !"))
     .catch((error) => {

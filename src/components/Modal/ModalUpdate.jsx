@@ -3,9 +3,13 @@ import { Button, Modal } from "react-bootstrap";
 
 export default function ModalUpdate({
   updateS2n,
-  setNames,
+  setNewNames,
   setNewImages,
   setNewInfos,
+  setNewTechnos,
+  setNewCities,
+  setNewYears,
+  setNewRates,
 }) {
   const [show, setShow] = useState(false);
 
@@ -33,9 +37,9 @@ export default function ModalUpdate({
               Esn name:
               <input
                 type="text"
-                name="s2n_name"
+                name="newName"
                 placeholder="Beapp"
-                onChange={(event) => setNames(event.target.value)}
+                onChange={(event) => setNewNames(event.target.value)}
               />
             </label>
 
@@ -45,6 +49,47 @@ export default function ModalUpdate({
                 placeholder="change your infos"
                 onChange={(event) => setNewInfos(event.target.value)}
                 className="texte-infos"
+                name="newInfo"
+              />
+            </label>
+
+            <label htmlFor="name">
+              Change your Techno:
+              <input
+                type="text"
+                name="newTechno"
+                placeholder="Python"
+                onChange={(event) => setNewTechnos(event.target.value)}
+              />
+            </label>
+
+            <label htmlFor="name">
+              Change your Citie:
+              <input
+                type="text"
+                name="newCitie"
+                placeholder="Lyon"
+                onChange={(event) => setNewCities(event.target.value)}
+              />
+            </label>
+
+            <label htmlFor="name">
+              Change the Date :
+              <input
+                type="text"
+                name="newYear"
+                placeholder="2020"
+                onChange={(event) => setNewYears(event.target.value)}
+              />
+            </label>
+
+            <label htmlFor="name">
+              Change your Rate:
+              <input
+                type="text"
+                name="newRate"
+                placeholder="4/5"
+                onChange={(event) => setNewRates(event.target.value)}
               />
             </label>
 
@@ -61,7 +106,7 @@ export default function ModalUpdate({
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="success" onSubmit={updateS2n}>
+          <Button variant="success" onClick={updateS2n}>
             Save
           </Button>
         </Modal.Footer>

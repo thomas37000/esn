@@ -10,16 +10,25 @@ import "../Form/Form.css";
 
 export default function CardById() {
   const { id } = useParams();
-  const [names, setNames] = useState("");
+
   const [datas, setDatas] = useState([]);
   const [technos, setTechnos] = useState([]);
   // const [s2nId, setS2nId] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  // put States
+  const [newName, setNewNames] = useState("");
   const [newImages, setNewImages] = useState("");
   const [newInfos, setNewInfos] = useState("");
+  const [newYear, setNewYears] = useState("");
+  const [newCitie, setNewCities] = useState("");
+  const [newTechno, setNewTechnos] = useState("");
+  const [newRate, setNewRates] = useState("");
 
   const { REACT_APP_SERVER } = process.env;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadS2nId = async () => {
@@ -45,22 +54,27 @@ export default function CardById() {
   /* update s2n*/
   const updateS2n = (event) => {
     event.preventDefault();
-    if (names || newImages || newInfos) {
+    if (newName || newImages || newInfos || newCitie || newTechno || newYear) {
       axios
         .put(`${REACT_APP_SERVER}/s2n/${id}`, {
-          s2n_name: names,
+          s2n_name: newName,
+          rate: Number(newRate),
           images: newImages,
           infos: newInfos,
+          citie_name: newCitie,
+          year: Number(newYear),
+          techno_name: newTechno,
         })
+        .then(() => alert("s2n Modifiée !"))
         .then((res) => {
           console.log(res);
         })
         .catch((err) => console.log("error: ", err));
     }
+    navigate("/");
   };
 
   /* delete s2n */
-  const navigate = useNavigate();
 
   const deleteS2N = () => {
     axios
@@ -107,7 +121,16 @@ export default function CardById() {
           <div className="infos">{infos}</div>
 
           {/*** modifier les infos de l'entreprise ***/}
-          <ModalUpdate />
+          <ModalUpdate
+            setNewNames={setNewNames}
+            setNewInfos={setNewInfos}
+            setNewTechnos={setNewTechnos}
+            setNewCities={setNewCities}
+            setNewYears={setNewYears}
+            setNewRates={setNewRates}
+            setNewImages={setNewImages}
+            updateS2n={updateS2n}
+          />
         </div>
       </div>
     </>
