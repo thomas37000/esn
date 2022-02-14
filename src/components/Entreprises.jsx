@@ -56,6 +56,7 @@ export default function Entreprise() {
         ) {
           return val;
         }
+        return false;
       })
       .map((s2n, i) => {
         return (
@@ -93,6 +94,15 @@ export default function Entreprise() {
       };
     });
 
+  const optionsTechno =
+    entreprises &&
+    entreprises.map((entreprise) => {
+      return {
+        value: entreprise.idEntreprises,
+        label: entreprise.techno_name,
+      };
+    });
+
   console.log(options);
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error...</div>;
@@ -118,7 +128,7 @@ export default function Entreprise() {
               placeholder="Php"
               defaultValue={selectedOption}
               onChange={setSelectedOption}
-              options={options}
+              options={optionsTechno}
               value={selectedOption}
             />
           </div>
