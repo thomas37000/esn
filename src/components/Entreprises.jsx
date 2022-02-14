@@ -1,9 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Form } from "react-bootstrap/";
 import Select from "react-select";
-import Card from "./Card/Card";
 import Skeleton from "./Card/Skeleton";
 import Card2 from "./Card/Card2";
 
@@ -14,13 +12,6 @@ export default function Entreprise() {
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
-
-  const deleteS2n = (idEntreprises) => {
-    const deleteEntreprises = entreprises.filter(
-      (entreprise) => entreprise.idEntreprises !== idEntreprises
-    );
-    setEntreprises(deleteEntreprises);
-  };
 
   const { REACT_APP_API_URL } = process.env;
 
@@ -59,13 +50,7 @@ export default function Entreprise() {
         }
       })
       .map((s2n, i) => {
-        return (
-          <Card2
-            key={i}
-            {...s2n}
-            handleClick={() => deleteS2n(s2n.idEntreprises)}
-          />
-        );
+        return <Card2 key={i} {...s2n} />;
       });
 
   const searchSubmit = (event) => {

@@ -3,7 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 
 export default function ModalUpdate({
   updateS2n,
-  setNames,
+  setNewNames,
   setNewImages,
   setNewInfos,
 }) {
@@ -35,7 +35,7 @@ export default function ModalUpdate({
                 type="text"
                 name="s2n_name"
                 placeholder="Beapp"
-                onChange={(event) => setNames(event.target.value)}
+                onChange={(event) => setNewNames(event.target.value)}
               />
             </label>
 
@@ -61,7 +61,7 @@ export default function ModalUpdate({
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="success" onSubmit={updateS2n}>
+          <Button variant="success" onClick={updateS2n}>
             Save
           </Button>
         </Modal.Footer>

@@ -10,7 +10,7 @@ import "../Form/Form.css";
 
 export default function CardById() {
   const { id } = useParams();
-  const [names, setNames] = useState("");
+  const [newNames, setNewNames] = useState("");
   const [datas, setDatas] = useState([]);
   const [technos, setTechnos] = useState([]);
   // const [s2nId, setS2nId] = useState([]);
@@ -45,16 +45,14 @@ export default function CardById() {
   /* update s2n*/
   const updateS2n = (event) => {
     event.preventDefault();
-    if (names || newImages || newInfos) {
+    if (newNames || newImages || newInfos) {
       axios
         .put(`${REACT_APP_SERVER}/s2n/${id}`, {
-          s2n_name: names,
+          s2n_name: newNames,
           images: newImages,
           infos: newInfos,
         })
-        .then((res) => {
-          console.log(res);
-        })
+        .then(() => alert("s2n Updated"))
         .catch((err) => console.log("error: ", err));
     }
   };
@@ -107,7 +105,12 @@ export default function CardById() {
           <div className="infos">{infos}</div>
 
           {/*** modifier les infos de l'entreprise ***/}
-          <ModalUpdate />
+          <ModalUpdate
+            updateS2n={updateS2n}
+            setNewNames={setNewNames}
+            setNewImages={setNewImages}
+            setNewInfos={setNewInfos}
+          />
         </div>
       </div>
     </>
