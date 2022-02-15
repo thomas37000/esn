@@ -6,6 +6,9 @@ export default function ModalUpdate({
   setNewNames,
   setNewImages,
   setNewInfos,
+  setNewCities,
+  setNewDates,
+  setNewRates
 }) {
   const [show, setShow] = useState(false);
 
@@ -45,6 +48,36 @@ export default function ModalUpdate({
                 placeholder="change your infos"
                 onChange={(event) => setNewInfos(event.target.value)}
                 className="texte-infos"
+              />
+            </label>
+
+            <label htmlFor="name">
+              citie:
+              <input
+                type="text"
+                name="cities"
+                placeholder="Nantes"
+                onChange={(event) => setNewCities(event.target.value)}
+              />
+            </label>
+
+            <label htmlFor="name">
+              created in:
+              <input
+                type="text"
+                name="date"
+                placeholder="2002"
+                onChange={(event) => setNewDates(event.target.value)}
+              />
+            </label>
+
+            <label htmlFor="name">
+              rate:
+              <input
+                type="text"
+                name="rate"
+                placeholder="rate out of 5"
+                onChange={(event) => setNewRates(event.target.value)}
               />
             </label>
 

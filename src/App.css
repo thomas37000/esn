@@ -32,25 +32,3 @@
     transform: rotate(360deg);
   }
 }
-
-.s2n-container {
-  width: 950px;
-  margin: 0 auto;
-  padding: 1rem;
-  box-sizing: border-box;
-  border: 3px solid transparent;
-  background-clip: padding-box, border-box;
-  background-origin: padding-box, border-box;
-  background-image: linear-gradient(#fff, #fff),
-    linear-gradient(to bottom, red, orange);
-}
-
-.filter-by-citie {
-  width: 250px;
-}
-
-@media screen and (min-width: 200px) and (max-width: 640px) {
-  .s2n-container {
-    width: auto;
-  }
-}

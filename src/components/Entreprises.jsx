@@ -1,9 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Form } from "react-bootstrap/";
 import Select from "react-select";
 import Skeleton from "./Card/Skeleton";
 import Card2 from "./Card/Card2";
+import "./Entreprises.css";
 
 export default function Entreprise() {
   const [entreprises, setEntreprises] = useState([]);
@@ -80,29 +82,57 @@ export default function Entreprise() {
     });
 
   console.log(options);
+
+  const optionsTechno =
+    entreprises &&
+    entreprises.map((entreprise) => {
+      return {
+        value: entreprise.idEntreprises,
+        label: entreprise.techno_name,
+      };
+    });
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error...</div>;
 
   return (
     <>
       <div className="s2n-container">
-        <form onSubmit={searchSubmit}>
-          <input
-            type="text"
-            placeholder="search..."
-            value={search}
-            onChange={handleChange}
-          />
-        </form>
+        <div className="filters">
+          <div className="filter-by-citie">
+            <Form.Label className="label">Filter by cities</Form.Label>
+            <Select
+              placeholder="Nantes"
+              defaultValue={selectedOption}
+              onChange={setSelectedOption}
+              options={options}
+              value={selectedOption}
+            />
+          </div>
 
-        <div className="filter-by-citie">
-          <Select
-            placeholder="Nantes"
-            defaultValue={selectedOption}
-            onChange={setSelectedOption}
-            options={options}
-            value={selectedOption}
-          />
+          <div className="filter-by-technos">
+            <Form.Label className="label">Filter by Technos</Form.Label>
+            <Select
+              placeholder="Php"
+              defaultValue={selectedOption}
+              onChange={setSelectedOption}
+              options={optionsTechno}
+              value={selectedOption}
+            />
+          </div>
+
+          <div className="input-search">
+            <form onSubmit={searchSubmit}>
+              <Form.Label className="label">Find your s2n</Form.Label>
+              <input
+                type="text"
+                placeholder="search..."
+                value={search}
+                onChange={handleChange}
+                className="search"
+              />
+            </form>
+          </div>
         </div>
 
         {fetchS2n}

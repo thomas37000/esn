@@ -18,6 +18,9 @@ export default function CardById() {
   const [error, setError] = useState(null);
   const [newImages, setNewImages] = useState("");
   const [newInfos, setNewInfos] = useState("");
+  const [newCities, setNewCities] = useState("");
+  const [newDates, setNewDates] = useState("");
+  const [newRates, setNewRates] = useState("");
 
   const { REACT_APP_SERVER } = process.env;
 
@@ -45,12 +48,22 @@ export default function CardById() {
   /* update s2n*/
   const updateS2n = (event) => {
     event.preventDefault();
-    if (newNames || newImages || newInfos) {
+    if (
+      newNames ||
+      newImages ||
+      newInfos ||
+      newCities ||
+      newDates ||
+      newRates
+    ) {
       axios
         .put(`${REACT_APP_SERVER}/s2n/${id}`, {
           s2n_name: newNames,
           images: newImages,
           infos: newInfos,
+          citie_name: newCities,
+          year: Number(newDates),
+          rate: Number(newRates),
         })
         .then(() => alert("s2n Updated"))
         .catch((err) => console.log("error: ", err));
@@ -110,6 +123,9 @@ export default function CardById() {
             setNewNames={setNewNames}
             setNewImages={setNewImages}
             setNewInfos={setNewInfos}
+            setNewCities={setNewCities}
+            setNewDates={setNewDates}
+            setNewRates={setNewRates}
           />
         </div>
       </div>

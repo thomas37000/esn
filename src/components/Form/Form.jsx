@@ -151,6 +151,16 @@ export default function Formulaire() {
           </Form.Group>
 
           <Form.Group className="mb-3">
+            <Form.Label>rate:</Form.Label>
+            <Form.Control
+              type="text"
+              name="rate"
+              placeholder="rate out of 5 "
+              onChange={(event) => setRates(event.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
             <Form.Label>logo / image:</Form.Label>
             <Form.Control
               type="text"
