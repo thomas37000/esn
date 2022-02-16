@@ -15,6 +15,7 @@ export default function Entreprise() {
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedCitie, setSelectedCitie] = useState(null);
   const [all, setAll] = useState([]);
 
   const { REACT_APP_API_URL } = process.env;
@@ -85,7 +86,7 @@ export default function Entreprise() {
         label: entreprise.citie_name,
       };
     });
-  //  console.log('[]', options);
+  console.log("[cities]", options);
 
   const optionsTechno =
     entreprises &&
@@ -109,6 +110,7 @@ export default function Entreprise() {
     if (button === "All") {
       setEntreprises(all);
       setSelectedOption("All");
+      setSelectedCitie("All");
 
       return;
     }
@@ -118,8 +120,14 @@ export default function Entreprise() {
       (project) => project.techno_name === button
     );
 
+    const filteredDataCities = entreprises.filter(
+      (citie) => citie.citie_name === button
+    );
+
     setEntreprises(filteredData);
-    setSelectedOption(button.value);
+    // setEntreprises(filteredDataCities);
+    // setSelectedOption(button.value);
+    // setSelectedCitie(button.value);
   };
 
   if (loading) return <div>Loading...</div>;
@@ -128,15 +136,20 @@ export default function Entreprise() {
   return (
     <>
       <div className="s2n-container">
+        <div className="filter-by-technos">
+          <Form.Label className="label">Filter by Technos</Form.Label>
+          <Buttons button={allTechnos} filter={filter} />
+        </div>
+        
         <div className="filters">
-          <div className="filter-by-citie">
+          {/* <div className="filter-by-citie">
             <Form.Label className="label">Filter by cities</Form.Label>
             <Select
               placeholder="Nantes"
-              defaultValue={selectedOption}
-              onChange={() => setSelectedOption()}
+              defaultValue={selectedCitie}
+              onChange={(value) => filter(value)}
               options={options}
-              value={selectedOption}
+              value={selectedCitie}
             />
           </div>
 
@@ -145,12 +158,12 @@ export default function Entreprise() {
             <Select
               placeholder="Php"
               defaultValue={selectedOption}
-              // onChange={(value) => filter(value)}
-              onChange={(value) => filter('Php')}
+              onChange={(value) => filter(value)}
+              // onChange={(value) => filter("Php")}
               options={optionsTechno}
               value={selectedOption}
             />
-          </div>
+          </div> */}
 
           <div className="input-search">
             <form onSubmit={searchSubmit}>
@@ -163,10 +176,6 @@ export default function Entreprise() {
                 className="search"
               />
             </form>
-          </div>
-
-          <div className="filter-by-technos">
-            <Buttons button={allTechnos} filter={filter} />
           </div>
         </div>
 

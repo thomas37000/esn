@@ -16,7 +16,7 @@
   align-items: center;
 }
 
-.filters .label {
+.filters .label ,.filter-by-technos {
   font-weight: 900;
   color: grey;
 }
@@ -29,6 +29,10 @@
 
 .filter-by-citie {
   width: 250px;
+}
+
+.filter-by-technos {
+ 
 }
 
 @media screen and (min-width: 200px) and (max-width: 640px) {
