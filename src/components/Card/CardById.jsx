@@ -52,7 +52,6 @@ export default function CardById() {
       newNames ||
       newImages ||
       newInfos ||
-      newCities ||
       newDates ||
       newRates
     ) {
@@ -123,7 +122,7 @@ export default function CardById() {
             setNewNames={setNewNames}
             setNewImages={setNewImages}
             setNewInfos={setNewInfos}
-            setNewCities={setNewCities}
+            // setNewCities={setNewCities}
             setNewDates={setNewDates}
             setNewRates={setNewRates}
           />

@@ -6,6 +6,7 @@ import Select from "react-select";
 import Skeleton from "./Card/Skeleton";
 import Card2 from "./Card/Card2";
 import "./Entreprises.css";
+import Buttons from "./Buttons/Buttons";
 
 export default function Entreprise() {
   const [entreprises, setEntreprises] = useState([]);
@@ -14,6 +15,7 @@ export default function Entreprise() {
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
+  const [all, setAll] = useState([]);
 
   const { REACT_APP_API_URL } = process.env;
 
@@ -23,6 +25,7 @@ export default function Entreprise() {
         try {
           const res = await axios.get(`${REACT_APP_API_URL}`);
           setEntreprises(res.data);
+          setAll(res.data);
           console.log("s2n", res.data);
         } catch (error) {
           setError(error);
@@ -72,6 +75,8 @@ export default function Entreprise() {
     setSearch(event.target.value);
   };
 
+  //Filter Function
+
   const options =
     entreprises &&
     entreprises.map((entreprise) => {
@@ -80,8 +85,7 @@ export default function Entreprise() {
         label: entreprise.citie_name,
       };
     });
-
-  console.log(options);
+  //  console.log('[]', options);
 
   const optionsTechno =
     entreprises &&
@@ -91,6 +95,32 @@ export default function Entreprise() {
         label: entreprise.techno_name,
       };
     });
+
+  console.log("[tek]", optionsTechno);
+
+  const allTechnos = [
+    "All",
+    ...new Set(entreprises.map((project) => project.techno_name)),
+  ];
+
+  console.log("technos", allTechnos);
+
+  const filter = (button) => {
+    if (button === "All") {
+      setEntreprises(all);
+      setSelectedOption("All");
+
+      return;
+    }
+    console.log("TEST", button, optionsTechno);
+
+    const filteredData = entreprises.filter(
+      (project) => project.techno_name === button
+    );
+
+    setEntreprises(filteredData);
+    setSelectedOption(button.value);
+  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error...</div>;
@@ -104,7 +134,7 @@ export default function Entreprise() {
             <Select
               placeholder="Nantes"
               defaultValue={selectedOption}
-              onChange={setSelectedOption}
+              onChange={() => setSelectedOption()}
               options={options}
               value={selectedOption}
             />
@@ -115,7 +145,8 @@ export default function Entreprise() {
             <Select
               placeholder="Php"
               defaultValue={selectedOption}
-              onChange={setSelectedOption}
+              // onChange={(value) => filter(value)}
+              onChange={(value) => filter('Php')}
               options={optionsTechno}
               value={selectedOption}
             />
@@ -132,6 +163,10 @@ export default function Entreprise() {
                 className="search"
               />
             </form>
+          </div>
+
+          <div className="filter-by-technos">
+            <Buttons button={allTechnos} filter={filter} />
           </div>
         </div>
 

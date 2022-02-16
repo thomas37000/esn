@@ -51,7 +51,7 @@ export default function ModalUpdate({
               />
             </label>
 
-            <label htmlFor="name">
+            {/* <label htmlFor="name">
               citie:
               <input
                 type="text"
@@ -59,7 +59,7 @@ export default function ModalUpdate({
                 placeholder="Nantes"
                 onChange={(event) => setNewCities(event.target.value)}
               />
-            </label>
+            </label> */}
 
             <label htmlFor="name">
               created in:
