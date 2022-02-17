@@ -53,7 +53,8 @@ export default function CardById() {
       newImages ||
       newInfos ||
       newDates ||
-      newRates
+      newRates ||
+      newCities
     ) {
       axios
         .put(`${REACT_APP_SERVER}/s2n/${id}`, {
