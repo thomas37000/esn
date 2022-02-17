@@ -42,7 +42,7 @@ export default function Formulaire() {
         })
         .then(() => alert("s2n Created"))
         .then((res) => {
-          console.log(res);
+          // console.log(res);
         })
         .catch((err) => console.log("error: ", err));
     }

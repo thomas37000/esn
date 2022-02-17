@@ -29,7 +29,7 @@ export default function Entreprise() {
         try {
           const res = await axios.get(`${REACT_APP_API_URL}`);
           setEntreprises(res.data);
-          console.log("s2n", res.data);
+          // console.log("s2n", res.data);
         } catch (error) {
           setError(error);
         } finally {
@@ -85,25 +85,6 @@ export default function Entreprise() {
     setSearch(event.target.value);
   };
 
-  const options =
-    entreprises &&
-    entreprises.map((entreprise) => {
-      return {
-        value: entreprise.idEntreprises,
-        label: entreprise.citie_name,
-      };
-    });
-
-  const optionsTechno =
-    entreprises &&
-    entreprises.map((entreprise) => {
-      return {
-        value: entreprise.idEntreprises,
-        label: entreprise.techno_name,
-      };
-    });
-
-  console.log(options);
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error...</div>;
 
@@ -111,27 +92,9 @@ export default function Entreprise() {
     <>
       <div className="s2n-container">
         <div className="filters">
-          <div className="filter-by-citie">
-            <Form.Label className="label">Filter by cities</Form.Label>
-            <Select
-              placeholder="Nantes"
-              defaultValue={selectedOption}
-              onChange={setSelectedOption}
-              options={options}
-              value={selectedOption}
-            />
-          </div>
-
-          <div className="filter-by-technos">
+          {/* <div className="filter-by-technos">
             <Form.Label className="label">Filter by Technos</Form.Label>
-            <Select
-              placeholder="Php"
-              defaultValue={selectedOption}
-              onChange={setSelectedOption}
-              options={optionsTechno}
-              value={selectedOption}
-            />
-          </div>
+          </div> */}
 
           <div className="input-search">
             <form onSubmit={searchSubmit}>
