@@ -1,12 +1,11 @@
 import React from "react";
 // import PropTypes from 'prop-types';
-import Card from "./Card";
+import "./Home.css";
 
 const Home = () => {
   return (
-    <div>
+    <div className="">
       <h1>S2N</h1>
-      <Card />
     </div>
   );
 };
