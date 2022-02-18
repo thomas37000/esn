@@ -135,9 +135,9 @@ export default function CardById() {
 
 CardById.propTypes = {
   images: PropTypes.string,
-  citie_name: PropTypes.string.isRequired,
-  s2n_name: PropTypes.string.isRequired,
-  techno_name: PropTypes.string.isRequired,
-  rate: PropTypes.number.isRequired,
-  year: PropTypes.number.isRequired,
+  citie_name: PropTypes.string,
+  s2n_name: PropTypes.string,
+  techno_name: PropTypes.string,
+  rate: PropTypes.number,
+  year: PropTypes.number,
 };

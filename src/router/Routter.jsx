@@ -18,8 +18,6 @@ const Routter = () => {
         {/* component is now element */}
         <Route exact path="/" element={<Entreprise />} />
         <Route path="/formulaire" element={<Formulaire />} />
-        <Route path="/test/technos/" element={<Technos />} />
-        <Route path="/s2n/technos/:id" element={<TechnoById />} />
         <Route path="/s2n/:id" element={<CardById />} />
         <Route path="/users/login" element={<Connexion />} />
         <Route path="/users/sign-up" element={<Inscription />} />

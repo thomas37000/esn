@@ -3,11 +3,7 @@ import CardSkeleton from "./CardSkeleton";
 import "./Card.css";
 
 const Skeleton = () => {
-  return (
-    <>
-      <CardSkeleton type="img" />
-    </>
-  );
+  return <CardSkeleton type="img" />;
 };
 
 export default Skeleton;
