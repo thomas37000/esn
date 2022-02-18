@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Card.css';
+// import './Card.css'; déjà appelé dans le parent
 
 const CardSkeleton = ({ type }) => {
   const classes = `skeleton ${type}`;

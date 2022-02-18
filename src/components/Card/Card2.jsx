@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
-// import "./Card.css";
+// import "./Card.css"; // deja appelé
 
 export default function Card2({
   images,

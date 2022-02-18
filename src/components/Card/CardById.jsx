@@ -12,7 +12,11 @@ import "../Form/Form.css";
 export default function CardById() {
   const { id } = useParams();
 
-  const [datas, setDatas] = useState([]);
+  // ---------------------------------------------------------------------------
+  // STATES
+  // ---------------------------------------------------------------------------
+  const [data, setData] = useState([]);
+  // const [datas, setDatas] = useState([]); data est déjà un pluriel. pas besoin de "S"
   const [technos, setTechnos] = useState([]);
 
   const [loading, setLoading] = useState(false);
@@ -26,31 +30,15 @@ export default function CardById() {
   const [newCitie, setNewCities] = useState("");
   const [newTechno, setNewTechnos] = useState("");
   const [newRate, setNewRates] = useState("");
+  // ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
 
   const { REACT_APP_SERVER } = process.env;
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const loadS2nId = async () => {
-      setTimeout(async () => {
-        try {
-          const res = await axios.get(`${REACT_APP_SERVER}/s2n/${id}`);
-          setDatas(res.data);
-          console.log("s2n by id", res.data);
-        } catch (error) {
-          setError(error);
-        } finally {
-          setLoading(false);
-        }
-      }, 500);
-    };
-
-    loadS2nId();
-  }, [id]);
-
   const { citie_name, images, infos, rate, s2n_name, techno_name, year } =
-    datas;
+    data;
 
   /* update s2n*/
   const updateS2n = (event) => {
@@ -76,7 +64,6 @@ export default function CardById() {
   };
 
   /* delete s2n */
-
   const deleteS2N = () => {
     axios
       .delete(`${REACT_APP_SERVER}/s2n/${id}`)
@@ -87,11 +74,37 @@ export default function CardById() {
     navigate("/");
   };
 
+  // ---------------------------------------------------------------------------
+  // LIFE CYCLE
+  // ---------------------------------------------------------------------------
+  useEffect(() => {
+    const loadS2nId = async () => {
+      setTimeout(async () => {
+        try {
+          const res = await axios.get(`${REACT_APP_SERVER}/s2n/${id}`);
+          setData(res.data);
+          console.log("s2n by id", res.data);
+        } catch (error) {
+          setError(error);
+        } finally {
+          setLoading(false);
+        }
+      }, 500);
+    };
+
+    loadS2nId();
+  }, [id]);
+
+  useEffect(() => {
+    console.log("did mount");
+  }, []);
+  // ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error...</div>;
 
   return (
-    <>
       <div className="s2n-container">
         {/*** Supprimer l'entreprise ***/}
         <div className="card-header-by-id">
@@ -134,7 +147,6 @@ export default function CardById() {
           />
         </div>
       </div>
-    </>
   );
 }
 
