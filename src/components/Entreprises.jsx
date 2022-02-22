@@ -83,14 +83,14 @@ export default function Entreprise() {
     });
 
     const onSelect = (val) => {
-      if (val.typeOf === "String" && val === "All") {
+      if (typeof val === "string" && val === "All") {
         setEntreprises(all);
         return;
       }
 
       const filteredData = all.filter(
         (project) => {
-          const label = val.typeOf === "String" ? val.toLowerCase() : val.label.toLowerCase();
+          const label = typeof val === "string" ? val.toLowerCase() : val.label.toLowerCase();
           setSelectedOption(label);
           return project.techno_name.toLowerCase() === label;
         }
