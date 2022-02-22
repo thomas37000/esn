@@ -71,17 +71,14 @@ export default function Entreprise() {
     });
 
   const onSelect = (val) => {
-    if (val.typeof === "String" && val === "All") {
+    if (typeof val === "string" && val === "All") {
       setEntreprises(all);
       return;
     }
-    console.log("val", val);
 
     const filteredData = all.filter((project) => {
       const label =
-        val.typeOf === "String"
-          ? val.toLowerCase()
-          : val.label && val.label.toLowerCase();
+        typeof val === "string" ? val.toLowerCase() : val.label.toLowerCase();
       setSelectedOption(label);
       return project.techno_name.toLowerCase() === label;
     });
@@ -133,10 +130,7 @@ export default function Entreprise() {
 
   return (
     <div className="s2n-container">
-      <div className="filter-by-technos">
-        <Form.Label className="label">Filter by Technos</Form.Label>
-        <Buttons val={allTechnos} filter={onSelect} />
-      </div>
+      <Buttons val={allTechnos} filter={onSelect} />
 
       <div className="filters">
         <div className="filter-by-citie">
