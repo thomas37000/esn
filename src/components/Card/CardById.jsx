@@ -15,14 +15,16 @@ export default function CardById() {
   // ---------------------------------------------------------------------------
   // STATES
   // ---------------------------------------------------------------------------
+
   const [data, setData] = useState([]);
-  // const [datas, setDatas] = useState([]); data est déjà un pluriel. pas besoin de "S"
   const [technos, setTechnos] = useState([]);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // put States
+  // ---------------------------------------------------------------------------
+  // PUT STATES
+  // ---------------------------------------------------------------------------
   const [newName, setNewNames] = useState("");
   const [newImages, setNewImages] = useState("");
   const [newInfos, setNewInfos] = useState("");
@@ -37,10 +39,12 @@ export default function CardById() {
 
   const navigate = useNavigate();
 
-  const { citie_name, images, infos, rate, s2n_name, techno_name, year } =
-    data;
+  const { citie_name, images, infos, rate, s2n_name, techno_name, year } = data;
 
-  /* update s2n*/
+  // ---------------------------------------------------------------------------
+  // UPDATE S2N
+  // ---------------------------------------------------------------------------
+
   const updateS2n = (event) => {
     event.preventDefault();
     if (newName || newImages || newInfos || newCitie || newTechno || newYear) {
@@ -63,7 +67,10 @@ export default function CardById() {
     navigate("/");
   };
 
-  /* delete s2n */
+  // ---------------------------------------------------------------------------
+  // DELETE S2N
+  // ---------------------------------------------------------------------------
+
   const deleteS2N = () => {
     axios
       .delete(`${REACT_APP_SERVER}/s2n/${id}`)
@@ -77,13 +84,13 @@ export default function CardById() {
   // ---------------------------------------------------------------------------
   // LIFE CYCLE
   // ---------------------------------------------------------------------------
+
   useEffect(() => {
     const loadS2nId = async () => {
       setTimeout(async () => {
         try {
           const res = await axios.get(`${REACT_APP_SERVER}/s2n/${id}`);
           setData(res.data);
-          console.log("s2n by id", res.data);
         } catch (error) {
           setError(error);
         } finally {
@@ -95,9 +102,6 @@ export default function CardById() {
     loadS2nId();
   }, [id]);
 
-  useEffect(() => {
-    console.log("did mount");
-  }, []);
   // ---------------------------------------------------------------------------
   // ---------------------------------------------------------------------------
 
@@ -105,56 +109,56 @@ export default function CardById() {
   if (error) return <div>Error...</div>;
 
   return (
-      <div className="s2n-container">
-        {/*** Supprimer l'entreprise ***/}
-        <div className="card-header-by-id">
-          <ModalDelete deleteS2N={deleteS2N} />
-        </div>
-
-        <div className="cardImg">
-          <img src={images} alt={s2n_name} className="cardImgById" />
-        </div>
-        <div className="card-by-id-body">
-          <h2>{s2n_name}</h2>
-
-          <h3 className="citie">city: {citie_name}</h3>
-
-          <div className="hard-skills">
-            <div className="">technos: {techno_name}</div>
-            {/* // ne marche pas */}
-            <div className="">
-              {technos.map((techno, i) => (
-                <div key={i}>{technos}</div>
-              ))}
-            </div>
-          </div>
-
-          <div className="year">created in: {year}</div>
-
-          <div className="rate">rate: {rate}</div>
-          <div className="infos">{infos}</div>
-
-          {/*** modifier les infos de l'entreprise ***/}
-          <ModalUpdate
-            setNewNames={setNewNames}
-            setNewInfos={setNewInfos}
-            setNewTechnos={setNewTechnos}
-            setNewCities={setNewCities}
-            setNewYears={setNewYears}
-            setNewRates={setNewRates}
-            setNewImages={setNewImages}
-            updateS2n={updateS2n}
-          />
-        </div>
+    <div className="s2n-container">
+      {/*** Supprimer l'entreprise ***/}
+      <div className="card-header-by-id">
+        <ModalDelete deleteS2N={deleteS2N} />
       </div>
+
+      <div className="cardImg">
+        <img src={images} alt={s2n_name} className="cardImgById" />
+      </div>
+      <div className="card-by-id-body">
+        <h2>{s2n_name}</h2>
+
+        <h3 className="citie">city: {citie_name}</h3>
+
+        <div className="hard-skills">
+          <div className="">technos: {techno_name}</div>
+          {/* // ne marche pas */}
+          <div className="">
+            {technos.map((techno, i) => (
+              <div key={i}>{technos}</div>
+            ))}
+          </div>
+        </div>
+
+        <div className="year">created in: {year}</div>
+
+        <div className="rate">rate: {rate}</div>
+        <div className="infos">{infos}</div>
+
+        {/*** modifier les infos de l'entreprise ***/}
+        <ModalUpdate
+          setNewNames={setNewNames}
+          setNewInfos={setNewInfos}
+          setNewTechnos={setNewTechnos}
+          setNewCities={setNewCities}
+          setNewYears={setNewYears}
+          setNewRates={setNewRates}
+          setNewImages={setNewImages}
+          updateS2n={updateS2n}
+        />
+      </div>
+    </div>
   );
 }
 
 CardById.propTypes = {
   images: PropTypes.string,
-  citie_name: PropTypes.string.isRequired,
-  s2n_name: PropTypes.string.isRequired,
-  techno_name: PropTypes.string.isRequired,
-  rate: PropTypes.number.isRequired,
-  year: PropTypes.number.isRequired,
+  citie_name: PropTypes.string,
+  s2n_name: PropTypes.string,
+  techno_name: PropTypes.string,
+  rate: PropTypes.number,
+  year: PropTypes.number,
 };
