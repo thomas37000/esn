@@ -5,12 +5,12 @@ import Connexion from "../components/Form/Connexion";
 import CardById from "../components/Card/CardById";
 import Entreprise from "../components/Entreprises";
 import Formulaire from "../components/Form/Form";
-import Nav from "../components/Nav/Nav";
+import NavBar from "../components/Nav/Navbar";
 
 const Routter = () => {
   return (
     <Router>
-      <Nav />
+      <NavBar />
       <Routes>
         <Route exact path="/" element={<Entreprise />} />
         <Route path="/formulaire" element={<Formulaire />} />
