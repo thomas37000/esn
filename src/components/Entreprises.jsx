@@ -4,8 +4,9 @@ import { Form } from "react-bootstrap/";
 import Select from "react-select";
 import Card2 from "./Card/Card2";
 import Skeleton from "./Card/Skeleton";
-import Buttons from "./Buttons/Buttons";
+// import Buttons from "./Buttons/Buttons";
 import "./Entreprises.css";
+import { IcRoundClear } from "./Buttons/Clear";
 
 export default function Entreprise() {
   // ---------------------------------------------------------------------------
@@ -82,10 +83,10 @@ export default function Entreprise() {
       setSelectedOption(label);
       return project.techno_name.toLowerCase() === label;
     });
-    
+
     setEntreprises(filteredData);
   };
-  
+
   const onSelectCities = (val) => {
     if (typeof val === "string" && val === "All") {
       setEntreprises(all);
@@ -102,6 +103,10 @@ export default function Entreprise() {
     });
 
     setEntreprises(filteredCities);
+  };
+
+  const ClearFilters = () => {
+    setEntreprises(all);
   };
 
   // ---------------------------------------------------------------------------
@@ -138,8 +143,8 @@ export default function Entreprise() {
 
   return (
     <div className="s2n-container">
-      <Buttons val={allTechnos} filter={onSelect} />
-      
+      {/* <Buttons val={allTechnos} filter={onSelect} /> */}
+
       <div className="filters">
         <div className="filter-by-citie">
           <Form.Label className="label">Filter by cities</Form.Label>
@@ -162,6 +167,10 @@ export default function Entreprise() {
             value={selectedOption}
           />
         </div>
+
+        <button type="button" onClick={() => ClearFilters()} className="reset">
+          <IcRoundClear />
+        </button>
 
         <div className="input-search">
           <form onSubmit={searchSubmit}>
