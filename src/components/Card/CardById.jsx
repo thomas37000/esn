@@ -135,7 +135,7 @@ export default function CardById() {
 
         <div className="year">created in: {year}</div>
 
-        <div className="rate">rate: {rate}</div>
+        {/* <div className="rate">rate: {rate}</div> */}
         <div className="infos">{infos}</div>
 
         {/*** modifier les infos de l'entreprise ***/}
