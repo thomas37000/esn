@@ -139,7 +139,7 @@ export default function Entreprise() {
   return (
     <div className="s2n-container">
       <Buttons val={allTechnos} filter={onSelect} />
-
+      
       <div className="filters">
         <div className="filter-by-citie">
           <Form.Label className="label">Filter by cities</Form.Label>

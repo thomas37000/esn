@@ -11,7 +11,7 @@
   }
   
   .filters {
-    display: flex;
+    display: inline-grid;
     justify-content: space-around;
     align-items: center;
   }
@@ -34,5 +34,9 @@
   @media screen and (min-width: 200px) and (max-width: 640px) {
       .s2n-container {
         width: auto;
+      }
+
+      .filters {
+        flex-wrap: wrap;
       }
     }
