@@ -82,18 +82,26 @@ export default function Entreprise() {
       setSelectedOption(label);
       return project.techno_name.toLowerCase() === label;
     });
-
-    // const filteredCities = all.filter((project) => {
-    //   const label =
-    //     val.typeOf === "String"
-    //       ? val.toLowerCase()
-    //       : val.label && val.label.toLowerCase();
-    //   setSelectedCitie(label);
-    //   return project.citie_name.toLowerCase() === label;
-    // });
-
+    
     setEntreprises(filteredData);
-    // setEntreprises(filteredCities);
+  };
+  
+  const onSelectCities = (val) => {
+    if (typeof val === "string" && val === "All") {
+      setEntreprises(all);
+      return;
+    }
+
+    const filteredCities = all.filter((project) => {
+      const label =
+        val.typeOf === "String"
+          ? val.toLowerCase()
+          : val.label && val.label.toLowerCase();
+      setSelectedCitie(label);
+      return project.citie_name.toLowerCase() === label;
+    });
+
+    setEntreprises(filteredCities);
   };
 
   // ---------------------------------------------------------------------------
@@ -138,7 +146,7 @@ export default function Entreprise() {
           <Select
             placeholder="Nantes"
             defaultValue={selectedCitie}
-            onChange={(value) => onSelect(value)}
+            onChange={(value) => onSelectCities(value)}
             options={options}
             value={selectedCitie}
           />
